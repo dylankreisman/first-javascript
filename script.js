@@ -4,22 +4,48 @@ var alphaLower = "abcdefghijklmnopqrstuvwxyz";
 var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
 var symbols = "!@#$%^&*_-+=";
-var charNum = ""
-for (let i = 8; i < 128; i++);   
-
- var generateConf = [alphaLower, alphaUpper, numbers, symbols] 
+var generateConf = ""; 
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-document.getElementById("generate").addEventListener("click", generatePrompt);
-function generatePrompt() {
-  var res
-  var charCount = prompt("How many characters would you like in your password?")
-  if (charCount == null || charCount == "") {
-    res="Please try again."
+document.getElementById("generate").addEventListener("click", generatePassword);
+function generatePassword() {
+  
+  var charCount = prompt("How many characters would you like in your password?");
+  if (charCount === null || charCount === "") {
+    alert("Please choose character amount between 8 and 128.");
   }
-  };
 
+  if (charCount < 8 || charCount > 128) {
+    alert("Please choose character amount between 8 and 128.");
+  }
+
+  else if (charCount >= 8 && charCount <= 128) {
+    var confOne = confirm("Click OK to confirm including special characters.")
+    var confTwo = confirm("Click OK to include lowercase letters."); 
+    var confThree = confirm("Click OK to include uppercase letters."); 
+    var confFour = confirm("Click OK to include numbers.");  
+     };
+
+    if (confOne == true) {
+      generateConf += symbols
+    }
+
+    if (confTwo == true) {
+      generateConf +=alphaLower
+    }
+
+    if (confThree == true) {
+      generateConf += alphaUpper
+    }
+
+    if (confFour == true) {
+      generateConf += numbers
+    }
+    
+    alert(generateConf);
+
+    };
 
 
 // Write password to the #password input
@@ -31,8 +57,6 @@ function writePassword() {
 
 }; 
 
-
-password = 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
