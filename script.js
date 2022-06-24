@@ -47,7 +47,12 @@ function generatePassword() {
     
     //alert(generateConf);
 
-
+    for (let i = 0; i < charCount; i++) {
+      generatedPass += generateConf.charAt(Math.floor(Math.random()*generateConf.length))
+        
+      }
+      return generatedPass   
+    };
 
 
 
